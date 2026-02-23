@@ -1,0 +1,16 @@
+#### Positivity-Based Mental Health Ranking (NEW - Phase 5 Integration)
+
+- [ ] T062a [P] [US3] Create positivity analyzer in `server/services/positivity-analyzer.ts` with OpenAI Vision/Text API for tone analysis + Cloudflare Workers AI for sentiment
+- [ ] T062b [P] [US3] Implement positivity score calculation: (openai_score * 0.6) + (cloudflare_sentiment * 0.4) storing results in videos and posts tables
+- [ ] T062c [US3] Add `positivity_score` column (0-100) to videos and posts tables with migration and index
+- [ ] T062d [US3] Update trending in `server/services/trending-calculator.ts`: (engagement * 0.5) + (positivity_score * 2)
+- [ ] T062e [US3] Update recommendations in `server/services/recommendations.ts` with positivity multipliers: 90+=3x, 70-89=1.5x, 50-69=1x, <50=0.5x
+- [ ] T062f [P] [US3] Create ranking engine in `server/services/ranking-engine.ts` mapping positivity to visibility tiers
+- [ ] T062g [P] [US3] Update feed queries to apply positivity-based visibility suppression in `server/services/feed-service.ts`
+- [ ] T062h [P] [US3] Add positivity score display in `client/components/admin/ModerationItem.tsx` with color coding
+- [ ] T062i [P] [US3] Create "Uplifting Content" admin dashboard section in `client/components/admin/UpliftingContent.tsx`
+- [ ] T062j [US3] Create positivity trend chart in `client/components/admin/PositivityMetrics.tsx` for mental health monitoring
+- [ ] T062k [US3] Add weekly positivity recalculation job in `server/services/job-queue.ts`
+- [ ] T062l [US3] Add GET `/api/feed/element/:id/uplifting` endpoint returning content ranked by positivity
+
+**Checkpoint**: Mental health ranking complete - positive content prioritized in all feeds
